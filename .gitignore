@@ -1,0 +1,18 @@
+# For MacOS file system
+*.DS_Store
+
+# Deps project cache directory
+.cpcache/
+
+# Non-default Clojure nrepl port is stored here:
+.nrepl-port
+
+# Files for developers' IDEs and other tools
+.idea/
+.nightlight.edn
+.dirac-chrome-profile/
+
+# Possible debugging artifacts
+/log
+*.log
+
