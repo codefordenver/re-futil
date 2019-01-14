@@ -1,5 +1,6 @@
 (ns re-futil.getter-setter-pipeline
-  "Useful extensions to the re-frame framework, usable in any re-frame app."
+  "Makes it easy to construct re-frame handlers in the most common use cases,
+  while facilitating a separation of concerns for your definitions."
   (:require [re-frame.core :as rf]))
 
 
@@ -10,6 +11,7 @@
   "
   [old-map & args]
   (apply assoc (or old-map (array-map)) args))
+
 
 
 (defn- pipeline-composer
@@ -209,9 +211,9 @@
 
       (reg-setter :my-handler
                   [:path :in :app-db]
-                  ::transform-fn (fn [new-val up?]
-                                   (if up? (upper-case new-val)
-                                           new-val)))
+                  :transform-fn (fn [new-val up?]
+                                  (if up? (upper-case new-val)
+                                          new-val)))
       (dispatch [:my-handler \"new words\" true])
       ; Note [event-id new-value remaining-arg] event vector.
 
